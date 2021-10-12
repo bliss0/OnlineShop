@@ -9,7 +9,7 @@ namespace OnlineShop.Data.Interfaces
     public interface IAllCars
     {
         IEnumerable<Car> Cars { get; }
-        IEnumerable<Car> getFavouriteCars { get; set; }
+        IEnumerable<Car> getFavouriteCars { get; }
         Car getObjectCar(int carId);
     }
 }

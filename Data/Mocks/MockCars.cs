@@ -20,22 +20,36 @@ namespace OnlineShop.Data.Mocks
                         name = "Tesla",
                         shortDesc="Авто Илона",
                         longDesc="Супербыстрый экономичный спорткар с одно из самых современных систем р=логистики",
-                        img="https://www.pnzdrive.ru/uploads/news/2021/001/999888/scale_1200.jpg",
+                        img="/img/scale_1200.jpg",
                         price=45000,
                         isFavourite=true,
-                        available=true, 
-                        category = _categoryCars.AllCategories.First() 
+                        available=true,
+                        category = _categoryCars.AllCategories.First()
                     },
-                    new Car{ 
+                    new Car{
                         name = "Aston Martin",
                         shortDesc="Резвый итальянец",
                         longDesc="Автомобиль с бешеным гоночным потенциалом довезет вас от одного конца города до другого, ведь разгон до 100 всего за 8 секунд",
-                        img="https://avatars.mds.yandex.net/get-zen_doc/1337093/pub_5e1e202632335400ac8d6117_5e1e21155d6c4b00b0d97cd2/scale_1200",
+                        img="/img/aston_martin_rapide_s.jpg",
                         price=45000,
                         isFavourite=true,
                         available=true,
                         category = _categoryCars.AllCategories.Last()
+
+                    },
+                    new Car
+                    {
+                        name="BMW",
+                        shortDesc="Наибыстрейший немец",
+                        longDesc="К - качество",
+                        img="",
+                        price=50000,
+                        isFavourite=false,
+                        available=false,
+                        category = _categoryCars.AllCategories.First()
+
                     }
+
                 };
             }
         }

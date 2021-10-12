@@ -1,15 +1,18 @@
 ﻿@using OnlineShop.ViewModels
 @model CarsListViewModel
 
-<body>
-    <h1> Все автомобили </h1>
-    <h3>@Model.currCategory</h3>
-    @{ foreach(var car in Model.AllCars)
-            {
-                <div>
-                    <h2>Модель: @car.name</h2>
-                    <p>Цена: @car.price.ToString("c")</p>
-                </div>
-            }
-       }
-</body>
+  <h1> Все автомобили </h1>
+  <h3>@Model.currCategory</h3>
+  <div class="row mt-5 mb-2">
+      @{ foreach (var car in Model.AllCars)
+          {
+              <div class="col-lg-4">
+                  <img class="img-thumbnail" src="@car.img" alt="@car.name" />
+                  <h2>@car.name</h2>
+                  <p>@car.shortDesc</p>
+                  <p>Цена: @car.price.ToString("c")</p>
+                  <p><a class="btn btn-warning" href="#">Подробнее</a></p>
+              </div>
+          }
+      }
+  </div>

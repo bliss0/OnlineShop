@@ -18,10 +18,10 @@ namespace OnlineShop.Data.Controllers
         }
         public ViewResult List()
         {
-            ViewBag.Title = "Страница с автомобилями";
+            ViewBag.Title = "Онлайн магазин автомобилей";
             CarsListViewModel obj = new CarsListViewModel();
             obj.AllCars = _allCars.Cars;
-            obj.currCategory = "Автомобили";
+            obj.currCategory = "Новейшие автомобили";
             return View(obj);
         }
     }
