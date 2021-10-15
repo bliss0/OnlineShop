@@ -46,14 +46,26 @@ namespace OnlineShop.Data
                           name = "BMW",
                           shortDesc = "Наибыстрейший немец",
                           longDesc = "К - качество",
-                          img = "",
+                          img = "/img/BMW.jpg",
                           price = 50000,
                           isFavourite = false,
                           available = false,
                           category = Categories["Классические автомобили"]
 
+                      },
+                      new Car
+                      {
+                          name = "LADA",
+                          shortDesc = "Русский автопром",
+                          longDesc = "Никогда не ломается, а емдли сломается починим",
+                          img = "/img/LADA.jpg",
+                          price = 10000,
+                          isFavourite = false,
+                          available=true,
+                          category = Categories["Классические автомобили"]
+
                       }
-                      );
+                      ) ;
             }
             content.SaveChanges();
         }

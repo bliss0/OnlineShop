@@ -23,5 +23,6 @@ namespace OnlineShop.Data.Repositories
 
         public Car getObjectCar(int carId) => appDBContent.Car.FirstOrDefault(p => p.id == carId);
         
+       
     }
 }

@@ -10,6 +10,7 @@ using OnlineShop.Data.Interfaces;
 using OnlineShop.Data.Mocks;
 using System;
 using OnlineShop.Data.Repositories;
+using OnlineShop.Data.Models;
 
 namespace OnlineShop
 {
@@ -17,7 +18,7 @@ namespace OnlineShop
     {
 
         private IConfigurationRoot _confString;
-        public Startup(IWebHostEnvironment hostEnv)
+        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv)
         {
             _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("DBSettings.json").Build();
         }
@@ -39,7 +40,7 @@ namespace OnlineShop
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
@@ -50,7 +51,9 @@ namespace OnlineShop
             {
                 AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
                 DBObjects.Initial(content);
+               
             }
+                      
 
             
         }
