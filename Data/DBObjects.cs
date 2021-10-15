@@ -12,17 +12,17 @@ namespace OnlineShop.Data
     {
         public static void Initial(AppDBContent content)
         {          
-            if (content.Category.Any())
+            if (!content.Category.Any())
                 content.Category.AddRange(Categories.Select(c => c.Value));
 
-            if (content.Car.Any())
+            if (!content.Car.Any())
             {
                 content.AddRange(
                         new Car
                         {
                             name = "Tesla",
                             shortDesc = "Авто Илона",
-                            longDesc = "Супербыстрый экономичный спорткар с одно из самых современных систем р=логистики",
+                            longDesc = "Супербыстрый экономичный спорткар с одно из самых современных систем логистики",
                             img = "/img/scale_1200.jpg",
                             price = 45000,
                             isFavourite = true,

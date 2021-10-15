@@ -9,8 +9,8 @@ using OnlineShop.Data;
 namespace OnlineShop.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20211015175858_LAST")]
-    partial class LAST
+    [Migration("20211015182553_Normal")]
+    partial class Normal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
