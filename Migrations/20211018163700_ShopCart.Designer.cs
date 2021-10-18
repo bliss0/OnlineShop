@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineShop.Data;
 
 namespace OnlineShop.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    partial class AppDBContentModelSnapshot : ModelSnapshot
+    [Migration("20211018163700_ShopCart")]
+    partial class ShopCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,15 +79,13 @@ namespace OnlineShop.Migrations
 
             modelBuilder.Entity("OnlineShop.Data.Models.ShopCartItem", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ShopCartId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("carid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("itemId")
                         .HasColumnType("int");
 
                     b.Property<int>("price")
@@ -95,7 +95,7 @@ namespace OnlineShop.Migrations
 
                     b.HasIndex("carid");
 
-                    b.ToTable("ShopCartItem");
+                    b.ToTable("ShopCartItems");
                 });
 
             modelBuilder.Entity("OnlineShop.Data.Models.Car", b =>
