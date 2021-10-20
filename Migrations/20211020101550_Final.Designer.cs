@@ -10,8 +10,8 @@ using OnlineShop.Data;
 namespace OnlineShop.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20211018163700_ShopCart")]
-    partial class ShopCart
+    [Migration("20211020101550_Final")]
+    partial class Final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,16 +77,83 @@ namespace OnlineShop.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Models.ShopCartItem", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("adress")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<DateTime>("orderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("phone")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("surname")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("OnlineShop.Data.Models.OrderDetail", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("carID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("orderID")
+                        .HasColumnType("int");
+
+                    b.Property<long>("price")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("carID");
+
+                    b.HasIndex("orderID");
+
+                    b.ToTable("OrderDetail");
+                });
+
+            modelBuilder.Entity("OnlineShop.Data.Models.ShopCartItems", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("carid")
                         .HasColumnType("int");
 
-                    b.Property<int>("itemId")
-                        .HasColumnType("int");
+                    b.Property<string>("cartID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("price")
                         .HasColumnType("int");
@@ -109,7 +176,26 @@ namespace OnlineShop.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Models.ShopCartItem", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.OrderDetail", b =>
+                {
+                    b.HasOne("OnlineShop.Data.Models.Car", "car")
+                        .WithMany()
+                        .HasForeignKey("carID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineShop.Data.Models.Order", "order")
+                        .WithMany("orderDetails")
+                        .HasForeignKey("orderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("car");
+
+                    b.Navigation("order");
+                });
+
+            modelBuilder.Entity("OnlineShop.Data.Models.ShopCartItems", b =>
                 {
                     b.HasOne("OnlineShop.Data.Models.Car", "car")
                         .WithMany()
@@ -121,6 +207,11 @@ namespace OnlineShop.Migrations
             modelBuilder.Entity("OnlineShop.Data.Models.Category", b =>
                 {
                     b.Navigation("cars");
+                });
+
+            modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
+                {
+                    b.Navigation("orderDetails");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,11 +7,11 @@ namespace OnlineShop.Data.Models
 {
     public class ShopCartItems
     {
-        public int ItemId { get; set; }
+        public int id { get; set; }
         public Car car { get; set; }
         public int price { get; set; }
 
-        public string id { get; set; }
+        public string itemId { get; set; }
 
     }
 }

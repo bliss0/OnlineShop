@@ -17,8 +17,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" asc-controller="Home" asp-action="Index">Главная</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Cars/List">Машины</a>
@@ -40,8 +40,7 @@
     <div class="container mt-5">
         @RenderBody()
     </div>
-    <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
+    <footer class="container">       
         <p>©2021 Все права защищены <a href="#">Соглашение</a>
     </footer>
     <script src="~/js/bootstrap.min.js"></script>
