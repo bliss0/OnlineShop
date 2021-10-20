@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineShop.Migrations
 {
-    public partial class Final : Migration
+    public partial class Test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -100,7 +100,7 @@ namespace OnlineShop.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     carid = table.Column<int>(type: "int", nullable: true),
                     price = table.Column<int>(type: "int", nullable: false),
-                    cartID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ShopCartId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

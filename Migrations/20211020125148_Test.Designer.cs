@@ -10,8 +10,8 @@ using OnlineShop.Data;
 namespace OnlineShop.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20211020101550_Final")]
-    partial class Final
+    [Migration("20211020125148_Test")]
+    partial class Test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -149,11 +149,11 @@ namespace OnlineShop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ShopCartId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("carid")
                         .HasColumnType("int");
-
-                    b.Property<string>("cartID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("price")
                         .HasColumnType("int");

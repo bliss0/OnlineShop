@@ -21,6 +21,7 @@ namespace OnlineShop.Data.Repositories
         {
             currOrder.orderTime = DateTime.Now;
             appDBContent.Order.Add(currOrder);
+            appDBContent.SaveChanges();
 
             var items = shopCart.listShopItems;
 
@@ -33,8 +34,10 @@ namespace OnlineShop.Data.Repositories
                     price = el.car.price
                 };
                 appDBContent.OrderDetail.Add(orderDetail);
+                appDBContent.SaveChanges();
+
             }
-            appDBContent.SaveChanges();
+           
         }
         
 

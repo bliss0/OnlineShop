@@ -17,7 +17,7 @@ namespace OnlineShop.Data.Models
             this.appDBContent = appDBContent;
         }
 
-        public string ShopCartID { get; set; }
+        public string ShopCartId { get; set; }
 
         public List<ShopCartItems>listShopItems { get; set; }
     
@@ -28,13 +28,13 @@ namespace OnlineShop.Data.Models
             string shopCartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", shopCartId);
 
-            return new ShopCart(context) { ShopCartID = shopCartId };
+            return new ShopCart(context) { ShopCartId = shopCartId };
         }
         public void AddToCart(Car car)
         {
             appDBContent.ShopCartItems.Add(new ShopCartItems
             {
-                itemId = ShopCartID,
+                ShopCartId = ShopCartId,
                 car = car,
                 price=car.price
             });
@@ -44,7 +44,7 @@ namespace OnlineShop.Data.Models
     
         public List<ShopCartItems>getShopItems()
             {
-            return appDBContent.ShopCartItems.Where(c => c.itemId == ShopCartID).Include(s => s.car).ToList();
+            return appDBContent.ShopCartItems.Where(c => c.ShopCartId == ShopCartId).Include(s => s.car).ToList();
             } 
     }
 }
