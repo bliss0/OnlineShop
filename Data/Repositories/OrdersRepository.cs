@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Data.Repositories
 {
-    public class OrdersRepository : IAllOrders
+    public class OrdersRepository : IAllOrders,IEmailSender
     {
         private readonly AppDBContent appDBContent;
         private readonly ShopCart shopCart;
@@ -35,11 +35,13 @@ namespace OnlineShop.Data.Repositories
                 };
                 appDBContent.OrderDetail.Add(orderDetail);
                 appDBContent.SaveChanges();
-
+         
             }
-           
+            IEmailSender.SendEmailAsync(currOrder.email, items).GetAwaiter();
+
+
         }
-        
+
 
     }
 }
